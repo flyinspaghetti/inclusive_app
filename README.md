@@ -22,3 +22,9 @@ npm install
 
 ### Start the development server
 npm start
+1. Open your web browser and go to http://localhost:3000.
+2. Enter text in the input field.
+3. Offensive words will be detected and highlighted.
+4. Hover over the highlighted words to see alternative suggestions.
+5. Click on a suggestion to replace the offensive word with the alternative.
+
