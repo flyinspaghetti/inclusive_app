@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import TextInput from './components/TextInput';
+import { detectBadWords } from './badWords'; // Update the import
 
 function App() {
+  const [inputText, setInputText] = useState('');
+
+  const handleInputChange = (event) => {
+    const newText = event.target.value;
+    setInputText(newText);
+  };
+
+  const handleAlternativeClick = (index, alternative) => {
+    const words = inputText.split(' ');
+    const wordToReplace = detectedWords[index];
+    const updatedWords = words.map(word => (word === wordToReplace ? alternative : word));
+    const newText = updatedWords.join(' ');
+    setInputText(newText);
+  };
+
+  const { detectedWords, alternatives } = detectBadWords(inputText);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Inclusive Language App</h1>
+      <TextInput
+       onInputChange={handleInputChange}
+       inputText={inputText}
+       detectedWords={detectedWords}
+       alternatives={alternatives}
+       onAlternativeClick={handleAlternativeClick} 
+      />
     </div>
   );
 }
