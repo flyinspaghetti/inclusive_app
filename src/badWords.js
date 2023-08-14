@@ -1,23 +1,24 @@
-const badWordsAndAlternatives = {
+const badWords = {
   fuck: 'heck',
   cunt: 'bad person',
-  twink: 'gay',
+  'a twink': 'gay',
+  'a bitch': 'a terrible woman'
   // ...
 };
 
 export function detectBadWords(inputText) {
+  const inputLower = inputText.toLowerCase();
   const detectedWords = [];
   const alternatives = [];
   
-  Object.keys(badWordsAndAlternatives).forEach(word => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    if (regex.test(inputText)) {
+ for (const word in badWords) {
+    if (inputLower.includes(word)) {
       detectedWords.push(word);
-      alternatives.push(badWordsAndAlternatives[word]);
+      alternatives.push(badWords[word]);
     }
-  });
-  
+  }
+
   return { detectedWords, alternatives };
 }
 
-export default badWordsAndAlternatives;
+export default badWords;

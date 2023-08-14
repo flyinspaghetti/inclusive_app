@@ -5,6 +5,7 @@ import { detectBadWords } from './badWords'; // Update the import
 
 function App() {
   const [inputText, setInputText] = useState('');
+  const [chatMessages, setChatMessages] = useState([]); // Add chatMessages state
 
   const handleInputChange = (event) => {
     const newText = event.target.value;
@@ -19,17 +20,26 @@ function App() {
     setInputText(newText);
   };
 
+  const handleSendClick = () => {
+    if (inputText.trim() !== '') {
+      setChatMessages([...chatMessages, inputText]);
+      setInputText('');
+    }
+  };
+
   const { detectedWords, alternatives } = detectBadWords(inputText);
 
   return (
     <div className="App">
       <h1>Inclusive Language App</h1>
       <TextInput
-       onInputChange={handleInputChange}
-       inputText={inputText}
-       detectedWords={detectedWords}
-       alternatives={alternatives}
-       onAlternativeClick={handleAlternativeClick} 
+        onInputChange={handleInputChange}
+        inputText={inputText}
+        detectedWords={detectedWords}
+        alternatives={alternatives}
+        onAlternativeClick={handleAlternativeClick}
+        onSendClick={handleSendClick}
+        chatMessages={chatMessages}   
       />
     </div>
   );

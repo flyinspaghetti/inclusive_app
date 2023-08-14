@@ -1,20 +1,49 @@
+.message-app {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+.message-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.message-list {
+  margin-bottom: 20px;
+}
+
+.message {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
 .text-input {
-    /* Your regular input styles */
-  }
-  
-  .suggestions {
-    position: relative;
-  }
-  
-  .suggestion {
-    display: inline-block;
-    border-bottom: 2px solid orange;
-    cursor: pointer;
-    margin: 0 2px;
-  }
-  
-  .suggestion:hover {
-    background-color: orange;
-    color: white;
-  }
-  
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.send-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.suggestions {
+  margin-top: 10px;
+}
+
+/* Add other styling rules as needed */
